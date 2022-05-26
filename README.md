@@ -28,6 +28,27 @@ config:
   security.nesting: "true"
 ```
 
+Add the following lines under devices
+```
+devices:
+  aadisable:
+    path: /sys/module/nf_conntrack/parameters/hashsize
+    source: /sys/module/nf_conntrack/parameters/hashsize
+    type: disk
+  aadisable2:
+    path: /dev/kmsg
+    source: /dev/kmsg
+    type: unix-char
+  aadisable3:
+    path: /sys/fs/bpf
+    source: /sys/fs/bpf
+    type: disk
+  aadisable4:
+    path: /proc/sys/net/netfilter/nf_conntrack_max
+    source: /proc/sys/net/netfilter/nf_conntrack_max
+    type: disk
+```
+
 Restart your lxc container
 ```
 lxc exec microk8s-1 reboot
